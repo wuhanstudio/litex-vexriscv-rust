@@ -40,8 +40,13 @@ $ sudo make install
 Install Yosys:
 
 ```
-$ git clone https://github.com/YosysHQ/yosys.git
+$ sudo apt-get install gawk git make python3 lld bison clang flex \
+	libffi-dev libfl-dev libreadline-dev pkg-config tcl-dev zlib1g-dev \
+	graphviz xdot
+$ curl -LsSf https://astral.sh/uv/install.sh | sh
+$ git clone --recursive https://github.com/YosysHQ/yosys.git
 $ cd yosys
+$ make config-gcc
 $ make -j$(nproc)
 $ sudo make install
 ```
