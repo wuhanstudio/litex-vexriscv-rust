@@ -76,14 +76,14 @@ You can upload bitstream and firmware to Icesugar board using the tool `icesprog
 
 ```
 $ sudo apt install libusb-dev libhidapi-dev 
-$ cd litex-soc-icesugar-rust
+$ cd litex-vexriscv-rust
 $ sudo cp icesugar/tools/icesprog* /usr/bin/
 ```
 
 ## LiteX SoC
 
 ```
-$ cd litex-soc-icesugar-rust
+$ cd litex-vexriscv-rust
 
 # This command uses our custom config
 $ python3 -m soc.targets.muselab_icesugar --build --doc
@@ -98,10 +98,7 @@ $ python3 -m soc.targets.muselab_icesugar --flash
 
 ```
 # This command creates the folder demo that includes the source code
-# litex_bare_metal_demo --build-path=./build/muselab_icesugar/
-
-$ cd demo
-$ make
+$ litex_bare_metal_demo --build-path=./build/muselab_icesugar/
 $ icesprog -w demo.bin -o 0x40000
 ```
 
