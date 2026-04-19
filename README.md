@@ -49,10 +49,12 @@ $ sudo make install
 Install Nextpnr:
 
 ```
-$ git clone https://github.com/YosysHQ/nextpnr
+$ sudo apt install libboost-dev libboost-filesystem-dev libboost-thread-dev libboost-program-options-dev libboost-iostreams-dev libboost-dev
+$ git clone --recursive https://github.com/YosysHQ/nextpnr
 $ cd nextpnr
-$ cmake . -DARCH=ice40
-$ make -j$(nproc)
+$ cmake . -B build -DARCH=ice40
+$ cmake --build build
+$ cd build
 $ sudo make install
 ```
 
