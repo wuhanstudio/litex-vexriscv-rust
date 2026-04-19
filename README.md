@@ -7,8 +7,8 @@
 Clone the repo:
 
 ```
-$ git clone https://github.com/wuhanstudio/litex-soc-icesugar-rust
-$ cd litex-soc-icesugar-rust
+$ git clone https://github.com/wuhanstudio/litex-vexriscv-rust
+$ cd litex-vexriscv-rust
 $ git submodule init
 $ git submodule update
 ```
