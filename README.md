@@ -4,13 +4,21 @@
 
 ## Prerequisites
 
+Install `uv` (python virtual environment):
+
+```
+$ curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
 Clone the repo:
 
 ```
-$ git clone https://github.com/wuhanstudio/litex-soc-icesugar-rust
-$ cd litex-soc-icesugar-rust
+$ git clone https://github.com/wuhanstudio/litex-vexriscv-rust
+$ cd litex-vexriscv-rust
 $ git submodule init
 $ git submodule update
+$ uv sync
+$ . .venv/bin/activate
 ```
 
 Install LiteX:
@@ -20,8 +28,6 @@ $ mkdir python-litex && cd python-litex
 $ wget https://raw.githubusercontent.com/enjoy-digital/litex/master/litex_setup.py
 $ chmod +x litex_setup.py
 $ ./litex_setup.py --init --install --user `whoami` --config=full
-$ sudo apt-get install python3-sphinx python3-sphinxcontrib*
-$ pip3 install meson sphinx sphinxcontrib-wavedrom
 ```
 
 Install IceStorm:
@@ -40,8 +46,12 @@ $ sudo make install
 Install Yosys:
 
 ```
-$ git clone https://github.com/YosysHQ/yosys.git
+$ sudo apt-get install gawk git make python3 lld bison clang flex \
+	libffi-dev libfl-dev libreadline-dev pkg-config tcl-dev zlib1g-dev \
+	graphviz xdot
+$ git clone --recursive https://github.com/YosysHQ/yosys.git
 $ cd yosys
+$ make config-gcc
 $ make -j$(nproc)
 $ sudo make install
 ```
@@ -76,14 +86,14 @@ You can upload bitstream and firmware to Icesugar board using the tool `icesprog
 
 ```
 $ sudo apt install libusb-dev libhidapi-dev 
-$ cd litex-soc-icesugar-rust
+$ cd litex-vexriscv-rust
 $ sudo cp icesugar/tools/icesprog* /usr/bin/
 ```
 
 ## LiteX SoC
 
 ```
-$ cd litex-soc-icesugar-rust
+$ cd litex-vexriscv-rust
 
 # This command uses our custom config
 $ python3 -m soc.targets.muselab_icesugar --build --doc
@@ -98,10 +108,7 @@ $ python3 -m soc.targets.muselab_icesugar --flash
 
 ```
 # This command creates the folder demo that includes the source code
-# litex_bare_metal_demo --build-path=./build/muselab_icesugar/
-
-$ cd demo
-$ make
+$ litex_bare_metal_demo --build-path=./build/muselab_icesugar/
 $ icesprog -w demo.bin -o 0x40000
 ```
 
