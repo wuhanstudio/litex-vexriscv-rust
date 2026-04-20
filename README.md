@@ -77,7 +77,7 @@ $ sudo ./litex_setup.py --gcc=riscv
 For Rust development:
 
 ```
-$ rustup target add riscv32imac-unknown-none-elf
+$ rustup target add riscv32i-unknown-none-elf
 $ cargo install cargo-binutils
 $ rustup component add llvm-tools-preview
 ```
