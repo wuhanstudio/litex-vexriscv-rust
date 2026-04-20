@@ -18,7 +18,7 @@ $ cd litex-vexriscv-rust
 $ git submodule init
 $ git submodule update
 $ uv sync
-$ . .venv/bin/activate
+$ source .venv/bin/activate
 ```
 
 Install LiteX:
@@ -94,6 +94,7 @@ $ sudo cp icesugar/tools/icesprog* /usr/bin/
 
 ```
 $ cd litex-vexriscv-rust
+$ source .venv/bin/activate
 
 # This command uses our custom config
 $ python3 -m soc.targets.muselab_icesugar --build --doc
