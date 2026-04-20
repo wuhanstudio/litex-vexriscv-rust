@@ -4,6 +4,12 @@
 
 ## Prerequisites
 
+Install `uv` (python virtual environment):
+
+```
+$ curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
 Clone the repo:
 
 ```
@@ -11,6 +17,8 @@ $ git clone https://github.com/wuhanstudio/litex-vexriscv-rust
 $ cd litex-vexriscv-rust
 $ git submodule init
 $ git submodule update
+$ uv sync
+$ . .venv/bin/activate
 ```
 
 Install LiteX:
@@ -20,7 +28,6 @@ $ mkdir python-litex && cd python-litex
 $ wget https://raw.githubusercontent.com/enjoy-digital/litex/master/litex_setup.py
 $ chmod +x litex_setup.py
 $ ./litex_setup.py --init --install --user `whoami` --config=full
-$ sudo apt-get install python3-sphinx python3-sphinxcontrib*
 $ pip3 install meson sphinx sphinxcontrib-wavedrom
 ```
 
@@ -43,7 +50,6 @@ Install Yosys:
 $ sudo apt-get install gawk git make python3 lld bison clang flex \
 	libffi-dev libfl-dev libreadline-dev pkg-config tcl-dev zlib1g-dev \
 	graphviz xdot
-$ curl -LsSf https://astral.sh/uv/install.sh | sh
 $ git clone --recursive https://github.com/YosysHQ/yosys.git
 $ cd yosys
 $ make config-gcc
